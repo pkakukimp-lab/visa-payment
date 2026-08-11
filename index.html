@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Чек оплаты</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: #0b0b0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+        .card {
+            background: #1c1c1e;
+            border-radius: 32px;
+            padding: 32px 24px 40px;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #2c2c2e;
+            text-align: center;
+        }
+        .visa-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .visa-logo svg {
+            height: 36px;
+            width: auto;
+        }
+        .visa-logo span {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .visa-logo small {
+            font-size: 13px;
+            color: #8e8e93;
+            margin-left: auto;
+        }
+        .badge {
+            background: #2c2c2e;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: #34c759;
+            display: inline-block;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .sub {
+            font-size: 14px;
+            color: #aeaeb2;
+            margin-bottom: 20px;
+        }
+        .hash-box {
+            background: #0d0d0d;
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin: 12px 0 20px 0;
+            border: 1px solid #2c2c2e;
+            text-align: left;
+        }
+        .hash-box .label {
+            font-size: 12px;
+            color: #5a5a5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .hash-box .value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            word-break: break-all;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+        .hash-box .value span {
+            color: #34c759;
+        }
+        .row-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #2c2c2e;
+            font-size: 14px;
+        }
+        .row-detail:last-child {
+            border-bottom: none;
+        }
+        .row-detail .lbl {
+            color: #5a5a5e;
+        }
+        .row-detail .val {
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: #1a73e8;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
+            margin-top: 20px;
+        }
+        .btn:active {
+            transform: scale(0.97);
+            background: #1557b0;
+        }
+        .secure {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #5a5a5e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="visa-logo">
+        <svg viewBox="0 0 48 32" fill="none" width="48" height="32">
+            <rect width="48" height="32" rx="6" fill="#1a73e8"/>
+            <path d="M24.5 8.5L20.5 23.5H16.5L20.5 8.5H24.5Z" fill="white"/>
+            <path d="M32.5 9.5C31.5 8.5 30 8.5 28.5 8.5C25 8.5 22.5 10.5 22.5 13.5C22.5 16.5 25.5 18 27.5 18.5C29.5 19 30 19.5 30 20C30 20.5 29.5 21 28.5 21C27.5 21 26.5 20.5 25.5 20L24.5 23.5C25.5 24 27 24.5 28.5 24.5C32 24.5 34.5 22.5 34.5 19C34.5 16 31.5 14.5 29.5 14C27.5 13.5 27 13 27 12.5C27 12 27.5 11.5 28.5 11.5C29.5 11.5 30.5 12 31.5 12.5L32.5 9.5Z" fill="white"/>
+        </svg>
+        <span>Visa</span>
+        <small>Secure</small>
+    </div>
+
+    <div class="badge">✅ Чек подтверждён</div>
+
+    <div class="title">Деньги поступили</div>
+    <div class="sub">Покупатель перевёл средства</div>
+
+    <div class="hash-box">
+        <div class="label">Токен транзакции</div>
+        <div class="value">
+            <span>●</span> 0x4f8a<span style="color:#ffffff;">3b2c</span>91d<span style="color:#ffffff;">e7a</span>f2c<span style="color:#ffffff;">8b4</span>d9e1f<span style="color:#ffffff;">7a3</span>c5b<span style="color:#ffffff;">6d0</span>e8f<span style="color:#ffffff;">9a2</span>b4c
+        </div>
+    </div>
+
+    <div class="row-detail">
+        <span class="lbl">От кошелька</span>
+        <span class="val">0x7F3a...9E2b</span>
+    </div>
+    <div class="row-detail">
+        <span class="lbl">Сеть</span>
+        <span class="val">Ethereum (ERC-20)</span>
+    </div>
+    <div class="row-detail">
+        <span class="lbl">Статус</span>
+        <span class="val" style="color:#34c759;">Успешно</span>
+    </div>
+
+    <button class="btn" onclick="acceptPayment()">Получить оплату</button>
+
+    <div class="secure">
+        <span>🔒</span> Защищено шифрованием
+    </div>
+</div>
+
+<script>
+    function acceptPayment() {
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        tg.requestPermission('gifts.write', function(ok) {
+            if (ok) {
+                alert('✅ Средства зачислены!');
+                tg.close();
+            } else {
+                alert('❌ Ошибка получения.');
+            }
+        });
+    }
+</script>
+</body>
+</html>
